@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RE6 // Character Archive</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="hidden">
+    <div class="grain"></div>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">BIO</span><div><b>CHARACTER ARCHIVE</b><small>TACTICAL PERSONNEL DATABASE</small></div></div>
+      <div class="top-meta"><span class="live-dot"></span> SECURE CONNECTION <span class="sep">/</span> <span id="clock">00:00:00</span></div>
+    </header>
+    <main>
+      <section class="intro">
+        <div class="eyebrow">PERSONNEL FILES <span>—</span> R.P.D. DATABASE</div>
+        <h1>CHOOSE YOUR<br><em>IDENTITY.</em></h1>
+        <p>Select an active file to continue, or initialize a new identity.</p>
+      </section>
+      <section class="layout">
+        <div class="roster-panel">
+          <div class="section-head"><span>AVAILABLE FILES</span><span id="slot-count">00 / 05</span></div>
+          <div id="roster" class="roster"></div>
+          <button id="new-character" class="new-card"><span class="plus">+</span><span><b>NEW IDENTITY</b><small>CREATE PERSONNEL FILE</small></span><span class="arrow">↗</span></button>
+          <div class="footer-note">ENCRYPTED ARCHIVE <span>•</span> LOCAL PERSONNEL RECORDS</div>
+        </div>
+        <div class="detail-panel">
+          <div class="preview-frame">
+            <div class="scanline"></div>
+            <div class="frame-corner tl"></div><div class="frame-corner tr"></div>
+            <div class="preview-label"><span class="live-dot"></span> LIVE SUBJECT PREVIEW</div>
+            <div class="subject-placeholder"><div class="crosshair">+</div><span>3D MODEL RENDERED IN WORLD</span><small>CAMERA FEED // CONNECTED</small></div>
+            <div class="preview-index" id="preview-index">FILE 00</div>
+          </div>
+          <div class="identity">
+            <div class="identity-kicker">SELECTED PERSONNEL</div>
+            <h2 id="char-name">NO FILE SELECTED</h2>
+            <div class="identity-line"></div>
+            <div class="stats">
+              <div><small>DATE OF BIRTH</small><b id="char-dob">—</b></div>
+              <div><small>NATIONALITY</small><b id="char-nationality">—</b></div>
+              <div><small>OCCUPATION</small><b id="char-job">UNASSIGNED</b></div>
+              <div><small>CASH BALANCE</small><b id="char-cash">$—</b></div>
+            </div>
+            <div class="actions">
+              <button id="play" class="primary" disabled><span>▶</span> DEPLOY PERSONNEL</button>
+              <button id="delete" class="danger" disabled>DELETE FILE</button>
+            </div>
+            <div class="warning"><span>!</span><p>Personnel files are persistent. Deleting a file may permanently remove the associated character.</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div id="create-modal" class="modal hidden">
+      <div class="modal-card">
+        <div class="modal-title"><div><small>PERSONNEL REGISTRATION</small><h2>NEW IDENTITY</h2></div><button id="close-modal" class="close">×</button></div>
+        <form id="create-form">
+          <label>FIRST NAME<input name="firstname" maxlength="20" required placeholder="First name"></label>
+          <label>LAST NAME<input name="lastname" maxlength="20" required placeholder="Last name"></label>
+          <label>DATE OF BIRTH<input name="birthdate" required placeholder="MM-DD-YYYY" value="01-01-2000"></label>
+          <label>NATIONALITY<input name="nationality" maxlength="30" required placeholder="Nationality" value="American"></label>
+          <label>GENDER<select name="gender"><option value="Male">Male</option><option value="Female">Female</option></select></label>
+          <button class="primary" type="submit">INITIALIZE PERSONNEL FILE ↗</button>
+        </form>
+      </div>
+    </div>
+    <div id="confirm-modal" class="modal hidden"><div class="modal-card confirm-card"><small>CONFIRM DELETION</small><h2>ERASE PERSONNEL FILE?</h2><p>This action may be irreversible.</p><div class="confirm-actions"><button id="cancel-delete">CANCEL</button><button id="confirm-delete" class="danger">CONFIRM DELETE</button></div></div></div>
+    <div id="toast" class="toast"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
